@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
+import {Question} from "../_common/entities/question";
+import {NgForm} from "@angular/forms";
+import {QuestionService} from "../_common/services/question/question.service";
 
 @Component({
   selector: 'app-new-question',
@@ -8,12 +11,27 @@ import {NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
 })
 export class NewQuestionComponent implements OnInit {
 
-  constructor(public activeModal: NgbActiveModal) { }
+  question: Question = new Question();
+
+  constructor(public activeModal: NgbActiveModal,
+              private questionService: QuestionService) { }
 
   ngOnInit() {
   }
 
-  save() {
+  save(questionForm: NgForm) {
+    if(!questionForm.valid){
+      return;
+    }
+    this.questionService.create(this.question).subscribe(response => {
+      console.log(response);
+    }, error => {
+      console.log(error);
+    });
+    this.close();
+  }
 
+  close() {
+    this.activeModal.close();
   }
 }

@@ -4,17 +4,19 @@
     <span aria-hidden="true">&times;</span>
   </button>
 </div>
-<div class="modal-body">
-  <form>
-    <div class="input-group">
-      <div class="input-group-prepend">
-        <span class="input-group-text">Question : </span>
+<form #questionForm="ngForm">
+  <div class="modal-body">
+    <form>
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Question : </span>
+        </div>
+        <textarea class="form-control" aria-label="With textarea" [(ngModel)]="question.question" [ngModelOptions]="{standalone: true}" rows="2"></textarea>
       </div>
-      <textarea class="form-control" aria-label="With textarea" rows="2"></textarea>
-    </div>
-  </form>
-</div>
+    </form>
+  </div>
+</form>
 <div class="modal-footer">
-  <button type="button" class="btn btn-outline-danger" (click)="activeModal.close('Close click')">Close</button>
-  <button type="button" class="btn btn-outline-success" (click)="save()">Save</button>
+  <button type="button" class="btn btn-danger" (click)="activeModal.close('Close click')">Close</button>
+  <button type="button" class="btn btn-success" (click)="save(questionForm)">Save</button>
 </div>

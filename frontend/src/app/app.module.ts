@@ -20,6 +20,7 @@ import { QuestionComponent } from './question/question.component';
 import { ProjectComponent } from './project/project.component';
 import { NewprojectComponent } from './newproject/newproject.component';
 import { NewQuestionComponent } from './new-question/new-question.component';
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -38,15 +39,16 @@ import { NewQuestionComponent } from './new-question/new-question.component';
     NewprojectComponent,
     NewQuestionComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    RouterModule,
-    NgbModule,
-    FontAwesomeModule,
-    HttpClientModule
+	imports: [
+		BrowserModule,
+		AppRoutingModule,
+		RouterModule,
+		NgbModule,
+		FontAwesomeModule,
+		HttpClientModule,
+		FormsModule
 
-  ],
+	],
   providers: [],
   bootstrap: [AppComponent]
 })

@@ -35,6 +35,10 @@ export abstract class CrudService<T> {
     return this.http.get<T>([this.restPath, id].join('/'));
   }
 
+  create(resource) {
+    return this.http.post<T>(this.restPath, resource);
+  }
+
   executeGetAndUnpackResponse(page?, sort?) {
     let requestParams: any = {};
     if (page) {
