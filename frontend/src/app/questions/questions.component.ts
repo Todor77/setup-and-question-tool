@@ -37,7 +37,13 @@ export class QuestionsComponent implements OnInit {
   }
 
   addNew() {
-    this.modalService.open(NewQuestionComponent, {size: 'lg'})
+    const modalRef = this.modalService.open(NewQuestionComponent, {size: 'lg'})
+    modalRef.result.then((response) => {
+      if(response == 'Close click'){
+        return;
+      }
+      this.questions.push(response);
+    })
   }
 
 }

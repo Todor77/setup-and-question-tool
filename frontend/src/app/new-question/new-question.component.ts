@@ -25,13 +25,14 @@ export class NewQuestionComponent implements OnInit {
     }
     this.questionService.create(this.question).subscribe(response => {
       console.log(response);
+      this.close(response);
+
     }, error => {
       console.log(error);
     });
-    this.close();
   }
 
-  close() {
-    this.activeModal.close();
+  close(response) {
+    this.activeModal.close(response);
   }
 }
