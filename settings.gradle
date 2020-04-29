@@ -1,0 +1,5 @@
+rootProject.name = 'setup-and-question-tool'
+
+include 'frontend'
+include 'tetst'
+

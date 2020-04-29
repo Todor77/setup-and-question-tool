@@ -1,0 +1,54 @@
+plugins {
+	id 'java'
+	id 'com.moowork.node' version '1.3.1'
+}
+
+apply plugin: 'java'
+apply plugin: 'com.moowork.node'
+
+version '0.1.0'
+
+node {
+	version = '10.13.0'
+	npmVersion = '6.11.3'
+	download = true
+}
+
+def jsBuildDir = project.buildDir.absolutePath +'/dist/'
+
+jar {
+	from 'dist' into 'static'
+	includeEmptyDirs = false
+}
+
+task buildDev (type: YarnTask, dependsOn: [yarn_install]) {
+	args = ['run', 'buildDev']
+}
+
+task buildProd (type: YarnTask, dependsOn: [yarn_install]) {
+  args = ['buildProd']
+}
+
+task start (type: YarnTask, dependsOn: [yarn_install]) {
+	args = ['start']
+}
+
+task newComponent (type: YarnTask) {
+  args = ['newcomponent']
+}
+
+task routingModule (type: YarnTask) {
+  args = ['routingModule']
+}
+
+task newProject (type: YarnTask) {
+  args = ['newproject']
+}
+
+clean {
+	delete fileTree(dir: "avtodemoUi/build")
+}
+
+task generateService (type: YarnTask) {
+  args = ['generateService']
+}

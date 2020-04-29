@@ -1,0 +1,32 @@
+<div class="container">
+  <h2>Projects</h2>
+  <div class="form-inline">
+    <label class="mr-1" for="filterInput"><span class="fa fa-filter mr-1"></span> Filter : </label>
+    <input class="form-control" id="filterInput" type="text"
+           placeholder="Tabelle nach Begriffen filtern">
+  </div>
+  <table class="table table-striped table-hover">
+    <thead class="thead-dark">
+    <tr>
+      <th>Project Name</th>
+      <th>Team</th>
+      <th>Description</th>
+      <th>Details</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr [routerLink]="['/projects/', 1]" data-title="Detailansicht öffnen">
+      <td>JStage-Shop</td>
+      <td>JStage</td>
+      <td>Spring project</td>
+      <td>edit/delete</td>
+    </tr>
+    <tr [routerLink]="['/projects/', 2]" data-title="Detailansicht öffnen">
+      <td>JStage-indexer</td>
+      <td>JStage</td>
+      <td>ElasticSeach project</td>
+      <td>edit/delete</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
