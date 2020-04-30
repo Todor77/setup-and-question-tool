@@ -21,6 +21,7 @@ import { ProjectComponent } from './project/project.component';
 import { NewprojectComponent } from './newproject/newproject.component';
 import { NewQuestionComponent } from './new-question/new-question.component';
 import {FormsModule} from "@angular/forms";
+import { SearchPipe } from './_common/search/search.pipe';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import {FormsModule} from "@angular/forms";
     QuestionComponent,
     ProjectComponent,
     NewprojectComponent,
-    NewQuestionComponent
+    NewQuestionComponent,
+    SearchPipe
   ],
 	imports: [
 		BrowserModule,

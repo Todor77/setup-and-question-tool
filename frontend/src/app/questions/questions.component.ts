@@ -13,6 +13,7 @@ export class QuestionsComponent implements OnInit {
 
   questions: Array<Question> = [];
   questionsCount: number;
+  querySearch: string;
   constructor(private modalService: NgbModal,
               private questionService: QuestionService) { }
 
