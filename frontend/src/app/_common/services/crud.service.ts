@@ -63,7 +63,10 @@ export abstract class CrudService<T> {
             _links: response._links
         };
     }));
+  }
 
+  delete<T>(resource) {
+    return this.http.delete<T>(this.getSelfLink(resource))
   }
 
 }

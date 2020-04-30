@@ -52,5 +52,10 @@ export class QuestionsComponent implements OnInit {
     })
   }
 
-
+  delete(question: Question, index) {
+    this.questionService.delete(question).subscribe(response => {
+      console.log(response);
+      this.questions.splice(index, 1);
+    });
+  }
 }
