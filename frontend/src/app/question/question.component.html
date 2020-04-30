@@ -1,6 +1,6 @@
 <div>
+  <br>
   <h2>{{question.question}}</h2>
-
   <br>
   <hr>
   <h4>Antwort</h4>
@@ -8,5 +8,10 @@
   <div>
     <span>Hier ist das antword auf die Frage.</span>
   </div>
+  <br>
+  <hr>
+  <br>
+  <button class="btn btn-outline-dark" [routerLink]="['/questions', previous()]">Previous</button>
+  <button class="btn btn-outline-dark" [routerLink]="['/questions', next()]">Next</button>
 </div>
 
