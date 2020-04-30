@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {QuestionService} from "../_common/services/question/question.service";
+import {QuestionService} from "../../_common/services/question/question.service";
 import {ActivatedRoute, Router} from "@angular/router";
-import {Question} from "../_common/entities/question";
+import {Question} from "../../_common/entities/question";
 
 @Component({
   selector: 'app-question',

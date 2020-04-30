@@ -15,11 +15,11 @@ import { LoginComponent } from './login/login.component';
 import { FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {HttpClientModule} from "@angular/common/http";
 import { ProjectsComponent } from './projects/projects.component';
-import { QuestionsComponent } from './questions/questions.component';
-import { QuestionComponent } from './question/question.component';
+import { QuestionsComponent } from './_components/questions/questions.component';
+import { QuestionComponent } from './_components/question/question.component';
 import { ProjectComponent } from './project/project.component';
 import { NewprojectComponent } from './newproject/newproject.component';
-import { NewQuestionComponent } from './new-question/new-question.component';
+import { NewQuestionComponent } from './_components/new-question/new-question.component';
 import {FormsModule} from "@angular/forms";
 import { SearchPipe } from './_common/search/search.pipe';
 

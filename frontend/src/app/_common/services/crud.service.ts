@@ -11,7 +11,7 @@ export abstract class CrudService<T> {
     this.restPath = [this.restEndpoint, this.path].join('/');
   }
 
-  getId(resource) {
+  getQeustionId(resource) {
     let link = '';
     if (resource.hasOwnProperty('_links')) {
       link = resource['_links'].self.href;
@@ -37,6 +37,10 @@ export abstract class CrudService<T> {
 
   create(resource) {
     return this.http.post<T>(this.restPath, resource);
+  }
+
+  update(resource) {
+    return this.http.put<T>(this.getSelfLink(resource), resource);
   }
 
   executeGetAndUnpackResponse(page?, sort?) {

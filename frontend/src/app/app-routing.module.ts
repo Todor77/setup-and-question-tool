@@ -6,8 +6,8 @@ import { ContactComponent} from "./contact/contact.component";
 import { HomeComponent} from "./home/home.component";
 import { LoginComponent} from "./login/login.component";
 import {ProjectsComponent} from "./projects/projects.component";
-import {QuestionsComponent} from "./questions/questions.component";
-import {QuestionComponent} from "./question/question.component";
+import {QuestionsComponent} from "./_components/questions/questions.component";
+import {QuestionComponent} from "./_components/question/question.component";
 import {ProjectComponent} from "./project/project.component";
 
 const routes: Routes = [

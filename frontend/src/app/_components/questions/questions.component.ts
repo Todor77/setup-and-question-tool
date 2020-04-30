@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {NewQuestionComponent} from "../new-question/new-question.component";
-import {Question} from "../_common/entities/question";
-import {QuestionService} from "../_common/services/question/question.service";
+import {Question} from "../../_common/entities/question";
+import {QuestionService} from "../../_common/services/question/question.service";
 
 @Component({
   selector: 'app-questions',
@@ -14,6 +14,7 @@ export class QuestionsComponent implements OnInit {
   questions: Array<Question> = [];
   questionsCount: number;
   querySearch: string;
+  isNewEntry: boolean = true;
   constructor(private modalService: NgbModal,
               private questionService: QuestionService) { }
 
@@ -29,16 +30,20 @@ export class QuestionsComponent implements OnInit {
   }
 
   //maybe bette to set a question nummber and on that number to navigate as id
-  getId(question) {
-    return this.questionService.getId(question);
+  getQuestionId(question) {
+    return this.questionService.getQeustionId(question);
   }
 
-  navigateToDetailPage(question) {
-    this.questionService.navigate(question);
-  }
-
-  addNew() {
-    const modalRef = this.modalService.open(NewQuestionComponent, {size: 'lg'})
+  addOrEditQuestion(isNewEntry: boolean, question?) {
+    const modalRef = this.modalService.open(NewQuestionComponent, {size: 'lg'});
+    if(!isNewEntry) {
+      modalRef.componentInstance.question = question;
+      modalRef.componentInstance.isNewEntry = false;
+    }
+    if(isNewEntry) {
+      modalRef.componentInstance.question = new Question();
+      modalRef.componentInstance.isNewEntry = true;
+    }
     modalRef.result.then((response) => {
       if(response == 'Close click'){
         return;
@@ -46,5 +51,6 @@ export class QuestionsComponent implements OnInit {
       this.questions.push(response);
     })
   }
+
 
 }
