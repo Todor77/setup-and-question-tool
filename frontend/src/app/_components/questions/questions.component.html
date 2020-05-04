@@ -23,4 +23,12 @@
       </div>
     </li>
   </ul>
+
+  <nav class="float-right pr-3 distance-top">
+    <ul class="pagination pagination-sm">
+      <li *ngFor="let pageNumber of getNumberAsArray(numberOfPages); let isLast = last; trackBy: trackByIndex" [ngClass]="{active: currentPage == pageNumber}">
+        <a (click)="fetchQuestionsChunk(pageNumber)">{{pageNumber}}{{isLast ? '': ' , '}} </a>
+      </li>
+    </ul>
+  </nav>
 </div>

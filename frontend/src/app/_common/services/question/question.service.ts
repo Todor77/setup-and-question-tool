@@ -12,7 +12,10 @@ export class QuestionService extends CrudService<Question>{
     super(http, "questions");
   }
 
-  navigate(question: Question) {
-    window.location.href = this.getSelfLink(question).replace(this.restEndpoint, "");
+  fetchQuestionsChunk(currentPage: number) {
+    let pageSize = 20;
+    let page = currentPage ? currentPage : 0;
+
+    return this.getAll(page, pageSize, 'question,asc')
   }
 }

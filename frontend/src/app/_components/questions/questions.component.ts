@@ -15,21 +15,17 @@ export class QuestionsComponent implements OnInit {
   questionsCount: number;
   querySearch: string;
   isNewEntry: boolean = true;
+  currentPage: number = 0;
+  numberOfPages: number = 0;
+
   constructor(private modalService: NgbModal,
               private questionService: QuestionService) { }
 
   ngOnInit() {
-    this.getAllQuestions();
+    this.fetchQuestionsChunk(this.currentPage);
   }
 
-  getAllQuestions() {
-    this.questionService.getAll<Question>().subscribe(response => {
-      this.questions = response.results;
-      this.questionsCount = response.page.totalElements;
-    })
-  }
-
-  //maybe bette to set a question nummber and on that number to navigate as id
+  //maybe better to set a question nummber and on that number to navigate as id
   getQuestionId(question) {
     return this.questionService.getQeustionId(question);
   }
@@ -57,5 +53,34 @@ export class QuestionsComponent implements OnInit {
       console.log(response);
       this.questions.splice(index, 1);
     });
+  }
+
+  getNumberAsArray(number) {
+    var numbersArray: number[] = new Array(number), temporaryArray: number[] = [];
+    for (var i = 0; i < numbersArray.length; i++) {
+      temporaryArray.push(i);
+    }
+    return temporaryArray;
+  }
+
+  fetchQuestionsChunk(requestedPage: number) {
+    this.questionService.fetchQuestionsChunk(requestedPage).subscribe(response => {
+      this.setQuestions(requestedPage, response);
+    })
+  }
+
+  private setQuestions(requestedPage: number, response) {
+    this.questions = response.results;
+    if(response.page) {
+      this.numberOfPages = response.page.totalPages;
+      this.questionsCount = response.page.totalElements;
+    }
+    if(requestedPage >= 0 && requestedPage < this.numberOfPages) {
+      this.currentPage = requestedPage;
+    }
+  }
+
+  trackByIndex(index) {
+    return index
   }
 }

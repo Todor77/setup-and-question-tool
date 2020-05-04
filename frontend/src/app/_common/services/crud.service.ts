@@ -27,8 +27,11 @@ export abstract class CrudService<T> {
     return selfLink.replace("{?projection}", "");
   }
 
-  getAll<T>(page?, sort?) {
-   return this.executeGetAndUnpackResponse();
+  getAll<T>(currentPage?, pageSize?, sort?) {
+    let requestParams: any = {};
+    requestParams.page = currentPage;
+    requestParams.size = pageSize;
+    return this.executeGetAndUnpackResponse(requestParams);
   }
 
   getById<T>(id) {
@@ -43,14 +46,7 @@ export abstract class CrudService<T> {
     return this.http.put<T>(this.getSelfLink(resource), resource);
   }
 
-  executeGetAndUnpackResponse(page?, sort?) {
-    let requestParams: any = {};
-    if (page) {
-      requestParams.page = page;
-    }
-    if (sort) {
-      requestParams.sort = sort.column + (sort.descending ? ',desc' : '');
-    }
+  executeGetAndUnpackResponse(requestParams?) {
     return this.http.get<any>(this.restPath, {params: requestParams})
       .pipe(
         map(response => {
