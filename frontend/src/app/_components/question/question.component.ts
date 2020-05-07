@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {QuestionService} from "../../_common/services/question/question.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {Question} from "../../_common/entities/question";
+import {Answer} from "../../_common/entities/answer";
 
 @Component({
   selector: 'app-question',
@@ -12,6 +13,7 @@ export class QuestionComponent implements OnInit {
 
   question: Question = new Question();
   questionId: string;
+  isLoaded: boolean = false;
 
   constructor(private questionService: QuestionService,
               private route: ActivatedRoute,
@@ -26,6 +28,7 @@ export class QuestionComponent implements OnInit {
       this.questionId = params.id;
       this.questionService.getById<Question>(params.id).subscribe(response => {
         this.question = response;
+        this.isLoaded = true;
       })
     })
   }

@@ -23,6 +23,7 @@ import { NewQuestionComponent } from './_components/new-question/new-question.co
 import {FormsModule} from "@angular/forms";
 import { SearchPipe } from './_common/search/search.pipe';
 import {HttpXsrfInterceptor} from "./HttpXsrfInterceptor";
+import { AnswerComponent } from './_components/answer/answer.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import {HttpXsrfInterceptor} from "./HttpXsrfInterceptor";
     ProjectComponent,
     NewprojectComponent,
     NewQuestionComponent,
-    SearchPipe
+    SearchPipe,
+    AnswerComponent
   ],
 	imports: [
 		BrowserModule,
