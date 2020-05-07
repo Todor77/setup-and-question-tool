@@ -13,7 +13,7 @@ import { RouterModule } from "@angular/router";
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { FontAwesomeModule} from '@fortawesome/angular-fontawesome';
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import { ProjectsComponent } from './projects/projects.component';
 import { QuestionsComponent } from './_components/questions/questions.component';
 import { QuestionComponent } from './_components/question/question.component';
@@ -22,6 +22,7 @@ import { NewprojectComponent } from './newproject/newproject.component';
 import { NewQuestionComponent } from './_components/new-question/new-question.component';
 import {FormsModule} from "@angular/forms";
 import { SearchPipe } from './_common/search/search.pipe';
+import {HttpXsrfInterceptor} from "./HttpXsrfInterceptor";
 
 @NgModule({
   declarations: [
@@ -51,7 +52,7 @@ import { SearchPipe } from './_common/search/search.pipe';
 		FormsModule
 
 	],
-  providers: [],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: HttpXsrfInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

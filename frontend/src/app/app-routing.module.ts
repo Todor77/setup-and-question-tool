@@ -9,6 +9,7 @@ import {ProjectsComponent} from "./projects/projects.component";
 import {QuestionsComponent} from "./_components/questions/questions.component";
 import {QuestionComponent} from "./_components/question/question.component";
 import {ProjectComponent} from "./project/project.component";
+import {AuthGuardService} from "./_common/services/auth/auth-guard.service";
 
 const routes: Routes = [
   {path: '', component: HomeComponent},

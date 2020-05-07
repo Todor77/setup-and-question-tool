@@ -10,7 +10,7 @@
     "newcomponent": "ng g pipe _common/search",
     "routingModule": "ng generate module app-routing --flat --module=app",
     "newproject": "ng new my-app",
-    "generateService": "ng generate service services/api"
+    "generateService": "ng generate service _common/services/account/account"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^0.901.3",
