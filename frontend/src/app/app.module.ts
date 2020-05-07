@@ -8,7 +8,7 @@ import { FooterComponent } from './footer/footer.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
-import { UserComponent } from './user/user.component';
+import { UserComponent } from './_components/user/user.component';
 import { RouterModule } from "@angular/router";
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
@@ -50,7 +50,6 @@ import {HttpXsrfInterceptor} from "./HttpXsrfInterceptor";
 		FontAwesomeModule,
 		HttpClientModule,
 		FormsModule
-
 	],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: HttpXsrfInterceptor, multi: true}],
   bootstrap: [AppComponent]

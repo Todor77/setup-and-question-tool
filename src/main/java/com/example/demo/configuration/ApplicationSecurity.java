@@ -14,9 +14,9 @@ import org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository;
 
 import javax.annotation.Resource;
 
-@Configuration
-@EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true)
+//@Configuration
+//@EnableWebSecurity
+//@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class ApplicationSecurity extends WebSecurityConfigurerAdapter {
 
 	@Resource
@@ -41,15 +41,12 @@ public class ApplicationSecurity extends WebSecurityConfigurerAdapter {
 				.authorizeRequests()
 				.antMatchers("/assets/**").permitAll()
 					//authentication needed for /api/questions
-				.antMatchers("/**", "/api/questions").permitAll()
+				.antMatchers("/**", "/api/questions", "/api/questions/**").permitAll()
 				.anyRequest().authenticated()
 				.and()
 			.formLogin()
 				.loginPage("/login")
-				.permitAll()
-				.and()
-				.csrf()
-				.csrfTokenRepository(tokenRepository);
+				.permitAll();
 	}
 
 }
