@@ -1,0 +1,13 @@
+version: '3.1'
+
+services:
+  db:
+    container_name: mariadb_setup_and_question_tool
+    image: mariadb_setup_and_question_tool
+    restart: always
+    ports:
+    - 3306:3306
+    environment:
+      MYSQL_USER: root
+      MYSQL_DATABASE: setup_and_question_tool
+
