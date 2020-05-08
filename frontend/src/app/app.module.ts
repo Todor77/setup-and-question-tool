@@ -12,7 +12,6 @@ import { UserComponent } from './_components/user/user.component';
 import { RouterModule } from "@angular/router";
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
-import { FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import { ProjectsComponent } from './projects/projects.component';
 import { QuestionsComponent } from './_components/questions/questions.component';
@@ -24,6 +23,9 @@ import {FormsModule} from "@angular/forms";
 import { SearchPipe } from './_common/search/search.pipe';
 import {HttpXsrfInterceptor} from "./HttpXsrfInterceptor";
 import { AnswerComponent } from './_components/answer/answer.component';
+import {FaIconLibrary, FontAwesomeModule} from "@fortawesome/angular-fontawesome";
+import {fas} from "@fortawesome/free-solid-svg-icons";
+import {far} from "@fortawesome/free-regular-svg-icons";
 
 @NgModule({
   declarations: [
@@ -49,11 +51,17 @@ import { AnswerComponent } from './_components/answer/answer.component';
 		AppRoutingModule,
 		RouterModule,
 		NgbModule,
-		FontAwesomeModule,
 		HttpClientModule,
-		FormsModule
+		FormsModule,
+    FontAwesomeModule,
+
 	],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: HttpXsrfInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(library: FaIconLibrary) {
+    library.addIconPacks(fas);
+    library.addIconPacks(far)
+  }
+}
