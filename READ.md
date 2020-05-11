@@ -19,3 +19,13 @@ These additional references should also help you:
 
 * [Gradle Build Scans – insights for your project's build](https://scans.gradle.com#gradle)
 
+
+### Docker
+With docker you can start mariadb with test data.
+
+* first install localy docker
+* pull mariadb image
+* compose up -d and then container is started at localhost:3306
+* make connection with your IDE to your database
+* to fix, dockerfile to buid mariadb image...
+* https://stackoverflow.com/questions/49573004/create-tables-on-docker-start

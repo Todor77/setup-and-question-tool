@@ -2,12 +2,20 @@ version: '3.1'
 
 services:
   db:
-    container_name: mariadb_setup_and_question_tool
-    image: mariadb_setup_and_question_tool
+    container_name: mariadb_setup_question_tool
+    image: mariadb
     restart: always
     ports:
     - 3306:3306
     environment:
       MYSQL_USER: root
-      MYSQL_DATABASE: setup_and_question_tool
+      MYSQL_DATABASE: setup_question_tool
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+    volumes:
+    - container-volume:/var/lib/mysql
+    - ./docker/:/docker-entrypoint-initdb.d
+    network_mode: host
+
+volumes:
+  container-volume:
 
