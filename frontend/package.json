@@ -7,7 +7,7 @@
     "buildDev": "ng build",
     "buildProd": "ng build --prod",
     "start": "ng serve",
-    "newcomponent": "ng g c _components/answer",
+    "newcomponent": "ng g c _components/answer-edit",
     "routingModule": "ng generate module app-routing --flat --module=app",
     "newproject": "ng new my-app",
     "generateService": "ng generate service _common/services/account/account"

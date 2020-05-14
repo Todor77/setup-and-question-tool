@@ -3,6 +3,7 @@ import {QuestionService} from "../../_common/services/question/question.service"
 import {ActivatedRoute, Router} from "@angular/router";
 import {Question} from "../../_common/entities/question";
 import {Answer} from "../../_common/entities/answer";
+import {faPencilAlt} from "@fortawesome/free-solid-svg-icons";
 
 @Component({
   selector: 'app-question',
@@ -12,8 +13,11 @@ import {Answer} from "../../_common/entities/answer";
 export class QuestionComponent implements OnInit {
 
   question: Question = new Question();
+  answer: Answer = new Answer();
   questionId: string;
   isLoaded: boolean = false;
+  editMode: boolean = false;
+  isNewEntry: boolean = false;
 
   constructor(private questionService: QuestionService,
               private route: ActivatedRoute,
@@ -29,6 +33,12 @@ export class QuestionComponent implements OnInit {
       this.questionService.getById<Question>(params.id).subscribe(response => {
         this.question = response;
         this.isLoaded = true;
+        this.questionService.answer(response).getAll().subscribe(response => {
+          this.answer = response.results;
+        }, (error => {
+          this.isNewEntry = true;
+          console.log(error);
+        }))
       })
     })
   }
@@ -42,5 +52,10 @@ export class QuestionComponent implements OnInit {
   previous() {
     if(this.questionId == '1') return 1;
     return parseInt(this.questionId) - 1;
+  }
+
+  enableEditAnswerMode(question) {
+    this.editMode = true;
+    //to decide if is adding a new answer or editing an existing one
   }
 }

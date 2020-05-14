@@ -3,6 +3,7 @@ import {NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
 import {Question} from "../../_common/entities/question";
 import {NgForm} from "@angular/forms";
 import {QuestionService} from "../../_common/services/question/question.service";
+import {Answer} from "../../_common/entities/answer";
 
 @Component({
   selector: 'app-new-question',
@@ -16,6 +17,8 @@ export class NewQuestionComponent implements OnInit {
 
   @Input()
   isNewEntry: boolean;
+
+  answer: Answer = new Answer();
 
   constructor(public activeModal: NgbActiveModal,
               private questionService: QuestionService) { }

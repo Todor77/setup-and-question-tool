@@ -26,13 +26,13 @@ import lombok.NoArgsConstructor;
 public class Question {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
 	private String question;
 
-	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
-	@JoinColumn(name = "answer", referencedColumnName = "id")
+	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true, optional = false)
+	@JoinColumn(name = "answer_id", referencedColumnName = "answer_id", nullable = false)
 	private Answer answer;
 
 }

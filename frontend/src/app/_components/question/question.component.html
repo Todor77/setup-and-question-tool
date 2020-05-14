@@ -2,10 +2,13 @@
   <h2>{{question.question}}</h2>
   <hr>
   <h4>Antwort</h4>
+  <fa-icon class="float-right" [icon]="['far','edit']" *ngIf="!editMode" (click)="enableEditAnswerMode(question)"></fa-icon>
   <div class="mt-3 mb-2">
-    <app-answer *ngIf="isLoaded" [answer]="question.answer"></app-answer>
+    <app-answer *ngIf="isLoaded && answer != null" [answer]="answer"></app-answer>
+
+    <app-answer-edit *ngIf="editMode" [question]="question" [isNewEntry]="isNewEntry" [answer]="answer"></app-answer-edit>
+
   </div>
-<!--  {{question.answer.answer}}-->
   <div>
     <button class="btn btn-outline-dark" [routerLink]="['/questions', previous()]">Previous</button>
     <button class="btn btn-outline-dark" [routerLink]="['/questions', next()]">Next</button>

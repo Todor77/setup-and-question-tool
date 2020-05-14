@@ -1,13 +1,16 @@
 import {Answer} from "./answer";
 
 export class Question {
-  id: number;
   question: string;
-  answer: Answer;
+  answer_id: number;
+  _links: links;
 
-  constructor() {
-    this.id = null;
-    this.question = null;
-    this.answer = new Answer();
+}
+
+
+interface links {
+  answer: {
+    href: string;
+    templated: boolean;
   }
 }

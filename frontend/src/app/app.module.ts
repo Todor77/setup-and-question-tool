@@ -26,6 +26,7 @@ import { AnswerComponent } from './_components/answer/answer.component';
 import {FaIconLibrary, FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import {fas} from "@fortawesome/free-solid-svg-icons";
 import {far} from "@fortawesome/free-regular-svg-icons";
+import { AnswerEditComponent } from './_components/answer-edit/answer-edit.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import {far} from "@fortawesome/free-regular-svg-icons";
     NewprojectComponent,
     NewQuestionComponent,
     SearchPipe,
-    AnswerComponent
+    AnswerComponent,
+    AnswerEditComponent
   ],
 	imports: [
 		BrowserModule,

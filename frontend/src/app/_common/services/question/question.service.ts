@@ -18,4 +18,12 @@ export class QuestionService extends CrudService<Question>{
 
     return this.getAll(page, pageSize, 'question,asc')
   }
+
+  answer(question) {
+    return new CrudService(this.http, question, 'answer');
+  }
+
+  answers() {
+    return new CrudService(this.http, 'answers')
+  }
 }

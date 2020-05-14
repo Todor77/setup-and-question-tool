@@ -1,0 +1,8 @@
+<div class="form-group">
+  <label for="answer">Write Answer !!!</label>
+  <textarea [(ngModel)]="answer.answer" class="form-control" id="answer" rows="4"></textarea>
+  <div class="float-right">
+    <button class="btn btn-success" (click)="save()">Save</button>
+    <button class="btn btn-danger" (click)="close()">Cancel</button>
+  </div>
+</div>
